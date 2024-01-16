@@ -2,13 +2,18 @@ package com.example.ecotrack_v1.ui.login;
 
 import static android.content.ContentValues.TAG;
 
+import static java.security.AccessController.getContext;
+
 import android.app.Activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -31,16 +36,21 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecotrack_v1.AndroidUtil;
+import com.example.ecotrack_v1.FireBaseUtil;
 import com.example.ecotrack_v1.LoginActivity;
 import com.example.ecotrack_v1.MainActivity2;
 import com.example.ecotrack_v1.R;
+import com.example.ecotrack_v1.StartActivity;
 import com.example.ecotrack_v1.ui.login.LoginViewModel;
 import com.example.ecotrack_v1.ui.login.LoginViewModelFactory;
 import com.example.ecotrack_v1.databinding.ActivityRegisterBinding;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -49,6 +59,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.UploadTask;
 import com.klinker.android.link_builder.Link;
 
 import org.w3c.dom.Text;
@@ -56,20 +67,26 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
 public class RegisterActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
+    ActivityResultLauncher<Intent> imagePickLauncher;
     private EditText fullname;
     String userProfile;
     String[] profiles = {"Regular User","Social Worker"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
-    private Button register;
+    private Button register, browse;
     private ProgressBar progressBar;
+    ImageView profileImage;
     private FirebaseAuth auth;
     String userID;
 
     private FirebaseFirestore fStore;
+    Uri selectedImageUri;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,7 +96,23 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         fullname = (EditText) findViewById(R.id.fullname);
         register = (Button) findViewById(R.id.btnRegister);
+        profileImage = findViewById(R.id.img_profile);
+        browse = findViewById(R.id.btn_choose_image);
         autoCompleteTextView = findViewById(R.id.auto_complete_txt);
+        imagePickLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == Activity.RESULT_OK)
+                    {
+                        Intent data = result.getData();
+                        if(data!=null && data.getData()!=null)
+                        {
+                            selectedImageUri = data.getData();
+                            AndroidUtil.setProfilePic(RegisterActivity.this, selectedImageUri,profileImage);
+                        }
+                    }
+
+                }
+                );
         adapterItems = new ArrayAdapter<String>(RegisterActivity.this, R.layout.list_profiles, profiles);
         progressBar = (ProgressBar) findViewById(R.id.loading);
         fStore = FirebaseFirestore.getInstance();
@@ -105,6 +138,19 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 userProfile = adapterView.getItemAtPosition(i).toString();
+            }
+        });
+        browse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.with(RegisterActivity.this).cropSquare().compress(512).maxResultSize(512, 512)
+                        .createIntent(new Function1<Intent, Unit>() {
+                            @Override
+                            public Unit invoke(Intent intent) {
+                                imagePickLauncher.launch(intent);
+                                return null;
+                            }
+                        });
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -149,15 +195,24 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                         userID = auth.getCurrentUser().getUid();
-                        DocumentReference documentReference = fStore.collection("Users").document(userID);
+                        DocumentReference documentReference = fStore.collection("users").document(userID);
                         Map<String, Object> user = new HashMap<>();
-                        user.put("FullName", txtFullname);
-                        user.put("Email", txtEmail);
-                        user.put("ProfileType", userProfile);
+                        user.put("fullname", txtFullname);
+                        user.put("email", txtEmail);
+                        user.put("profileType", userProfile);
+                        user.put("greenPoints", 0);
+                        if(selectedImageUri!=null)
+                        {
+                            FireBaseUtil.getCurrentProfilePicStroageRef().putFile(selectedImageUri)
+                                    .addOnCompleteListener(task1 -> {
+                                        user.put("ProfilePhotoUri", selectedImageUri);
+                                    });
+                        }
                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Log.d(TAG, "onSuccess: user profile is created for "+ userID );
+                                Toast.makeText(RegisterActivity.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -175,6 +230,13 @@ public class RegisterActivity extends AppCompatActivity {
                     }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(RegisterActivity.this, StartActivity.class));
+        finish();
     }
 
 

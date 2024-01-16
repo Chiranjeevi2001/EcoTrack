@@ -18,5 +18,11 @@
     <string name="prompt_fullname">Full Name</string>
     <string name="logout">Logout\n</string>
     <string name="LoginPrompt">Already a user? Login</string>
+    <string name="appName">EcoTrack</string>
+    <string name="newsHeadline">Latest on Environmental Innovation and Climate Action</string>
+    <string name="title_activity_maps_report">MapsReportActivity</string>
+    <string name="Maps_Api_Key">AIzaSyBZCU0xBr1697ajAuOyBJdkFjlaXXrw5Uk</string>
+    <string name="Browse">Browse</string>
+    <string name="profile_image_description">Profle Photo</string>
 
 </resources>

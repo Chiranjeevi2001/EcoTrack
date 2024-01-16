@@ -72,7 +72,6 @@
         android:background="@color/appGreen"
         android:backgroundTint="@color/appGreen"
         android:src="@drawable/report_add"
-        android:tint="@color/appGreen"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="bottom|center" />
 

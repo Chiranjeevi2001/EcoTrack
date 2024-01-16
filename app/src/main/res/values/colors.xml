@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="hintGrey">#606060</color>
     <color name="appGreen">#5F9EA0</color>
     <color name="purple_200">#FF8886FC</color>
     <color name="purple_500">#FF6200EE</color>

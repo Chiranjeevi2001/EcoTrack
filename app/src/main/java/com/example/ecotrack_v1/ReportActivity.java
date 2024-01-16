@@ -3,11 +3,13 @@ package com.example.ecotrack_v1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +21,7 @@ public class ReportActivity extends AppCompatActivity {
 
     BottomNavigationView bnView;
     FloatingActionButton fab;
+    Button mapButton;
     TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,15 @@ public class ReportActivity extends AppCompatActivity {
         txt = (TextView) findViewById(R.id.txt_report);
         bnView = (BottomNavigationView) findViewById(R.id.bnView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        mapButton = (Button) findViewById(R.id.btn_map);
         txt.setText("This is Report Activity");
+
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ReportActivity.this, MapsReportActivity.class));
+            }
+        });
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,8 +46,8 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
         Menu menu = bnView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(false);
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
         bnView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

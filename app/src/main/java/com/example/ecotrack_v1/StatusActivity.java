@@ -66,4 +66,9 @@ public class StatusActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(StatusActivity.this, HomeActivity.class));
+        super.onBackPressed();
+    }
 }

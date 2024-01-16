@@ -24,6 +24,13 @@
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_report"
+            android:layout_centerInParent="true"
+            android:text="Open Map"
+            android:id="@+id/btn_map"/>
 
     </RelativeLayout>
 
@@ -71,9 +78,10 @@
         android:contentDescription="Add Report"
         android:background="@color/appGreen"
         android:backgroundTint="@color/appGreen"
+        android:layout_marginLeft="160.5dp"
         android:src="@drawable/report_add"
         android:tint="@color/appGreen"
         app:layout_anchor="@+id/container"
-        app:layout_anchorGravity="bottom|center" />
+        app:layout_anchorGravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

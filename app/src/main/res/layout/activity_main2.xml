@@ -60,7 +60,7 @@
         android:layout_gravity="center"
         android:contentDescription="Add Report"
         android:background="@color/appGreen"
-        android:backgroundTint="@color/appGreen"
+        android:backgroundTint="@color/white"
         android:src="@drawable/report_add"
         android:tint="@color/appGreen"
         app:layout_anchor="@+id/container"

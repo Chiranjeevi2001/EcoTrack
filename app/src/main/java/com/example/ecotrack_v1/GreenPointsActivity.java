@@ -64,6 +64,11 @@ public class GreenPointsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GreenPointsActivity.this, HomeActivity.class));
+        super.onBackPressed();
     }
 }
