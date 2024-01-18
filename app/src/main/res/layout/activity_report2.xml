@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_button"
+        android:padding="10dp"
+        android:drawableRight="@drawable/ic_back_arrow"
+        android:backgroundTint="@color/white"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/report_head"
+        android:padding="20dp"
+        android:textColor="@color/appGreen"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textSize="22sp"/>
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/trash_img_ll"
+     android:orientation="vertical">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:id="@+id/img_trash"
+            android:layout_margin="10dp"
+            android:src="@drawable/img_placeholder_text"
+            android:contentDescription="TrashImage"
+            android:layout_marginLeft="10dp"/>
+ </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_trash_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/appGreen"
+            android:contentDescription="Add Trash Image"
+            android:src="@drawable/ic_camera_white"
+            app:tint="@color/white"
+            app:layout_anchor="@+id/trash_img_ll"
+            app:layout_anchorGravity="bottom|end"
+            />
+
+        <!--<ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/btn_add_trash_img"
+        android:contentDescription="AddTrashImage"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_camera_add_image"/>-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/appGreen"
+        android:textStyle="bold"
+        android:text="Pick the size of the trash:"
+        android:fontFamily="sans-serif"/>
+
+    <RadioGroup
+        android:id="@+id/singleSelectionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <!-- RadioButtons for single selection -->
+        <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"
+            android:text="Small" />
+
+        <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="sans-serif"
+            android:text="Large" />
+
+    </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick the trash category:"
+        android:textStyle="bold"
+        android:textColor="@color/appGreen"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <include
+            android:id="@+id/cb_kitchen_waste"
+
+            layout="@layout/kitchen_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/cb_plastic_waste"
+            layout="@layout/plastic_checkbox_layout"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/cb_e_waste"
+            layout="@layout/ewaste_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <include
+            android:id="@+id/cb_biomedical_waste"
+            layout="@layout/biomedical_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/cb_construction_and_demolition_waste"
+            layout="@layout/construction_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/cb_organic_waste"
+            layout="@layout/organic_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- CheckBox with icon 1 -->
+
+
+        <include
+            android:id="@+id/cb_glass_Waste"
+            layout="@layout/glass_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- CheckBox with icon 2 -->
+        <include
+            android:id="@+id/cb_hazardous_waste"
+            layout="@layout/hazardous_checkbox_layout"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- CheckBox with icon 3 -->
+        <include
+            android:id="@+id/cb_sanitary_waste"
+            layout="@layout/sanitary_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="10dp"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        tools:context=".MapsReportActivity" />
+    <TextView
+        android:id="@+id/txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:hint="Location"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+</LinearLayout>
+</ScrollView>

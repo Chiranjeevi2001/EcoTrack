@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class GreenPointsActivity extends AppCompatActivity {
     BottomNavigationView bnView;
     FloatingActionButton fab;
+    UserModel currentUser;
     TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class GreenPointsActivity extends AppCompatActivity {
         txt = (TextView) findViewById(R.id.txt_green_points);
         bnView = (BottomNavigationView) findViewById(R.id.bnView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        txt.setText("Your Green Points will appear here!");
+        getUserGreenPoints();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +64,14 @@ public class GreenPointsActivity extends AppCompatActivity {
                 }
                 return false;
             }
+        });
+    }
+
+    private void getUserGreenPoints() {
+        FireBaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+            currentUser = task.getResult().toObject(UserModel.class);
+            String greenPoints_txt = "You currently have "+currentUser.getGreenPoints()+" Green Points!";
+            txt.setText(greenPoints_txt);
         });
     }
 

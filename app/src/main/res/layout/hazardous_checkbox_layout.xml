@@ -1,0 +1,33 @@
+<!-- res/layout/custom_checkbox_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/trash_icon"
+            android:layout_width="69sp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/hazardous_waste"
+            android:layout_height="69sp"
+            />
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="69sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/trash_description"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_marginLeft="3dp"
+        android:layout_gravity="center"
+        android:textSize="8sp"
+        android:text=""/>
+</LinearLayout>

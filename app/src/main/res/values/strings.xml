@@ -24,5 +24,6 @@
     <string name="Maps_Api_Key">AIzaSyBZCU0xBr1697ajAuOyBJdkFjlaXXrw5Uk</string>
     <string name="Browse">Browse</string>
     <string name="profile_image_description">Profle Photo</string>
+    <string name="report_head">Report Trash around you!</string>
 
 </resources>

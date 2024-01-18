@@ -48,6 +48,7 @@
             android:exported="false" />
         <activity
             android:name=".ReportActivity"
+            android:parentActivityName=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
