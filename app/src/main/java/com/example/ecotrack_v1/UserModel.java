@@ -34,9 +34,9 @@ public class UserModel {
     public int getGreenPoints(){
         return greenPoints;
     }
-    public void setGreenPoints(int greenPoints)
+    public void addGreenPoints(int greenPoints)
     {
-        this.greenPoints = greenPoints;
+        this.greenPoints += greenPoints;
     }
 
     public String getFullname() {

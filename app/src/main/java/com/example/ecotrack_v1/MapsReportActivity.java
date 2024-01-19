@@ -6,7 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
@@ -17,6 +19,7 @@ import android.location.Geocoder;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,10 +30,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.ecotrack_v1.databinding.ActivityMapsReportBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,6 +48,7 @@ public class MapsReportActivity extends AppCompatActivity implements OnMapReadyC
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    FloatingActionButton accept;
     GPSTracker gps;
     double latitude, longitude;
     String place;
@@ -53,10 +59,26 @@ public class MapsReportActivity extends AppCompatActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_report);
 
+        accept = findViewById(R.id.btn_accept_location);
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        getLastLocation();
 
+        getLastLocation();
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                returnModifiedLocation(latitude, longitude);
+            }
+        });
+
+    }
+    private void returnModifiedLocation(double modifiedLatitude, double modifiedLongitude) {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("MODIFIED_LATITUDE", modifiedLatitude);
+        resultIntent.putExtra("MODIFIED_LONGITUDE", modifiedLongitude);
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
     }
 
     private void getLastLocation() {
@@ -72,7 +94,7 @@ public class MapsReportActivity extends AppCompatActivity implements OnMapReadyC
                 {
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
-                    Toast.makeText(getBaseContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Location Fetched", Toast.LENGTH_SHORT).show();
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                             .findFragmentById(R.id.map);
                     try {
@@ -117,10 +139,32 @@ public class MapsReportActivity extends AppCompatActivity implements OnMapReadyC
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
         mMap = googleMap;
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDrag(@NonNull Marker marker) {
 
+            }
+
+            @Override
+            public void onMarkerDragEnd(@NonNull Marker marker) {
+                LatLng updatedLatLng = marker.getPosition();
+                latitude = updatedLatLng.latitude;
+                longitude = updatedLatLng.longitude;
+                try {
+                    getPlaceName(latitude,longitude);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onMarkerDragStart(@NonNull Marker marker) {
+
+            }
+        });
         LatLng latLng = new LatLng(latitude, longitude);
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(place);
-        mMap.addMarker(markerOptions);
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(place).draggable(true);
+        mMap.addMarker(markerOptions).setDraggable(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16f));
         mMap.addCircle(new CircleOptions().center(latLng)

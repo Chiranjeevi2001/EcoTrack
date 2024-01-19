@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<fragment
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
@@ -7,3 +12,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapsReportActivity" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_accept_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/appGreen"
+        android:contentDescription="Add Trash Image"
+        android:src="@drawable/ic_check"
+        app:tint="@color/white"
+        app:layout_anchor="@+id/map"
+        app:layout_anchorGravity="bottom|end"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

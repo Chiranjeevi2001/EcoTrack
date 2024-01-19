@@ -23,6 +23,12 @@
     <string name="title_activity_maps_report">MapsReportActivity</string>
     <string name="Maps_Api_Key">AIzaSyBZCU0xBr1697ajAuOyBJdkFjlaXXrw5Uk</string>
     <string name="Browse">Browse</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+
+
+
     <string name="profile_image_description">Profle Photo</string>
     <string name="report_head">Report Trash around you!</string>
 

@@ -1,4 +1,8 @@
-package com.example.ecotrack_v1.ui.login;
+package com.example.ecotrack_v1;
+
+import android.net.Uri;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +12,8 @@ public class ReportModel {
     private String reportedUser;
     private List<String> trashType;
     private String trashSize;
+    String imageUri;
+    LatLng location;
 
 
     public ReportModel()
@@ -16,11 +22,12 @@ public class ReportModel {
         trashType = new ArrayList<>();
 
     }
-    public ReportModel(String reportedUser, String trashSize)
+    public ReportModel(String reportedUser, String trashSize, LatLng location)
     {
         this.reportedUser = reportedUser;
         this.trashSize = trashSize;
         trashType = new ArrayList<>();
+        this.location = location;
     }
 
     public void setReportedUser(String reportedUser)
@@ -50,6 +57,29 @@ public class ReportModel {
         if(index != -1) {
             this.trashType.remove(index);
         }
+    }
+
+    public List<String> getTrashType()
+    {
+        return this.trashType;
+    }
+
+    public void setLocation(LatLng location)
+    {
+        this.location = location;
+    }
+    public LatLng getLocation()
+    {
+        return this.location;
+    }
+
+    public void setImageUri(String imageUri)
+    {
+        this.imageUri = imageUri;
+    }
+    public Uri getImageUri()
+    {
+        return Uri.parse(this.imageUri);
     }
 
 }
