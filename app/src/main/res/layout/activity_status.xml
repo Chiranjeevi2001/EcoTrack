@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
@@ -13,30 +14,40 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:layout_marginBottom="?attr/actionBarSize">
-        <TextView
-            android:id="@+id/txt_status"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This is Status Activity"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            >
+
+            <TextView
+                android:id="@+id/txt_status_headline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/statusHeader"
+                android:textColor="@color/appGreen"/>
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress_bar"
+                android:indeterminate="true"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/reports_recycler_view"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 
-    <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
-         android:id="@+id/bnView"
-         android:layout_width="match_parent"
-         android:layout_height="?attr/actionBarSize"
-         android:background="@color/appGreen"
-         app:menu="@menu/nav_items"
-         android:layout_alignParentBottom="true"
-         app:f
-
-         /> -->
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/baView"
         android:layout_width="match_parent"
@@ -69,10 +80,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="Add Report"
-        android:background="@color/appGreen"
+        android:background="@color/white"
         android:backgroundTint="@color/appGreen"
         android:src="@drawable/report_add"
-        android:tint="@color/appGreen"
+        android:tint="@color/white"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="bottom|center" />
 

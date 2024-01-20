@@ -574,7 +574,7 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
         place = addresses.get(0).getAddressLine(0);
-        location.setText("Current Location:"+place);
+        location.setText("Current Location: "+place);
 
     }
 

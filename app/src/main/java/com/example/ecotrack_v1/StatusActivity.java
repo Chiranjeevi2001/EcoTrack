@@ -21,10 +21,10 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-        txt = (TextView) findViewById(R.id.txt_status);
+        //txt = (TextView) findViewById(R.id.txt_status);
         bnView = (BottomNavigationView) findViewById(R.id.bnView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        txt.setText("This is Status Activity");
+        //txt.setText("This is Status Activity");
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

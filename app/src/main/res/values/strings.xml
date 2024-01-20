@@ -31,5 +31,6 @@
 
     <string name="profile_image_description">Profle Photo</string>
     <string name="report_head">Report Trash around you!</string>
+    <string name="statusHeader">Your Reports</string>
 
 </resources>
