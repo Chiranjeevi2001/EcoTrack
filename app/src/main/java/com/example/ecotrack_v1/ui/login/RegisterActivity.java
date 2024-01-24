@@ -2,35 +2,25 @@ package com.example.ecotrack_v1.ui.login;
 
 import static android.content.ContentValues.TAG;
 
-import static java.security.AccessController.getContext;
-
 import android.app.Activity;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -43,13 +33,11 @@ import android.widget.Toast;
 
 import com.example.ecotrack_v1.AndroidUtil;
 import com.example.ecotrack_v1.FireBaseUtil;
+import com.example.ecotrack_v1.HomeActivity;
 import com.example.ecotrack_v1.LoginActivity;
-import com.example.ecotrack_v1.MainActivity2;
 import com.example.ecotrack_v1.R;
+import com.example.ecotrack_v1.SocialWorkerHomeActivity;
 import com.example.ecotrack_v1.StartActivity;
-import com.example.ecotrack_v1.ui.login.LoginViewModel;
-import com.example.ecotrack_v1.ui.login.LoginViewModelFactory;
-import com.example.ecotrack_v1.databinding.ActivityRegisterBinding;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -59,10 +47,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.UploadTask;
-import com.klinker.android.link_builder.Link;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -203,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
                         user.put("greenPoints", 0);
                         if(selectedImageUri!=null)
                         {
-                            FireBaseUtil.getCurrentProfilePicStroageRef().putFile(selectedImageUri)
+                            FireBaseUtil.getCurrentProfilePicStorageRef().putFile(selectedImageUri)
                                     .addOnCompleteListener(task1 -> {
                                         user.put("ProfilePhotoUri", selectedImageUri);
                                     });
@@ -220,9 +204,14 @@ public class RegisterActivity extends AppCompatActivity {
                                 Log.d(TAG, "onFailure: "+ e.toString());
                             }
                         });
-
-                        startActivity(new Intent(RegisterActivity.this, MainActivity2.class));
-                        finish();
+                        if(userProfile.equals("Social Worker")) {
+                            startActivity(new Intent(RegisterActivity.this, SocialWorkerHomeActivity.class));
+                            finish();
+                        }
+                        else if(userProfile.equals("Regular User")) {
+                            startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                            finish();
+                        }
                     }
                     else {
                         Toast.makeText(RegisterActivity.this,"Registration Failed: Email may already exist.", Toast.LENGTH_SHORT).show();

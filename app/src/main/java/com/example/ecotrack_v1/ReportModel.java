@@ -9,25 +9,51 @@ import java.util.List;
 
 public class ReportModel {
 
-    private String reportedUser;
-    private List<String> trashType;
-    private String trashSize;
+    String reportedUser;
+    List<String> trashType = new ArrayList<>();
+    String trashSize;
+    boolean isCleaned;
     String imageUri;
-    LatLng location;
+    String place;
 
-
-    public ReportModel()
-    {
-        this.trashSize = "small";
-        trashType = new ArrayList<>();
-
+    public double getLongitude() {
+        return longitude;
     }
-    public ReportModel(String reportedUser, String trashSize, LatLng location)
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public ReportModel() {
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    double longitude;
+    double latitude;
+
+    public ReportModel(String reportedUser, String trashSize, double longitude, double latitude, boolean isCleaned)
     {
         this.reportedUser = reportedUser;
         this.trashSize = trashSize;
         trashType = new ArrayList<>();
-        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.isCleaned = isCleaned;
     }
 
     public void setReportedUser(String reportedUser)
@@ -63,16 +89,6 @@ public class ReportModel {
     {
         return this.trashType;
     }
-
-    public void setLocation(LatLng location)
-    {
-        this.location = location;
-    }
-    public LatLng getLocation()
-    {
-        return this.location;
-    }
-
     public void setImageUri(String imageUri)
     {
         this.imageUri = imageUri;
@@ -80,6 +96,15 @@ public class ReportModel {
     public Uri getImageUri()
     {
         return Uri.parse(this.imageUri);
+    }
+
+    public void setIsCleaned(boolean isCleaned)
+    {
+        this.isCleaned = isCleaned;
+    }
+    public boolean getIsCleaned()
+    {
+        return this.isCleaned;
     }
 
 }

@@ -8,6 +8,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class FireBaseUtil {
+    public FireBaseUtil() {
+    }
+
     public static String currentUserId(){
         return FirebaseAuth.getInstance().getUid();
     }
@@ -30,7 +33,7 @@ public class FireBaseUtil {
         return FirebaseFirestore.getInstance().collection("users");
     }
 
-    public static StorageReference getCurrentProfilePicStroageRef()
+    public static StorageReference getCurrentProfilePicStorageRef()
     {
         return FirebaseStorage.getInstance().getReference().child("Profile_pic")
                 .child(FireBaseUtil.currentUserId());

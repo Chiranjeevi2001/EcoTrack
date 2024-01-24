@@ -35,22 +35,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class HomeActivity extends AppCompatActivity {
+public class SocialWorkerHomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Article> articleList =  new ArrayList<>();
     NewsRecyclerAdapter adapter;
     LinearProgressIndicator progressIndicator;
     TextView txt, welcome;
     BottomNavigationView bnView;
-    FloatingActionButton fab;
     FirebaseAuth auth;
     FirebaseFirestore fStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        bnView = (BottomNavigationView) findViewById(R.id.bnView);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        setContentView(R.layout.activity_social_worker_home);
+        bnView = (BottomNavigationView) findViewById(R.id.sw_bnView);
         progressIndicator = findViewById(R.id.progress_bar);
         recyclerView = findViewById(R.id.news_recycler_view);
         welcome = (TextView) findViewById(R.id.txt_news_headline);
@@ -58,12 +56,6 @@ public class HomeActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         setWelcomeText();
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, ReportActivity.class));
-            }
-        });
         Menu menu = bnView.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
@@ -71,23 +63,23 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.nav_home)
+                if(id == R.id.nav_home_sw)
                 {
                     //startActivity(new Intent(HomeActivity.this, HomeActivity.class));
                 }
-                else if(id == R.id.nav_profile)
+                else if(id == R.id.nav_profile_sw)
                 {
-                    startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(SocialWorkerHomeActivity.this, SocialWorkerProfileActivity.class));
                     return true;
                 }
-                else if(id == R.id.nav_green_points)
+                else if(id == R.id.nav_green_points_sw)
                 {
-                    startActivity(new Intent(HomeActivity.this, GreenPointsActivity.class));
+                    startActivity(new Intent(SocialWorkerHomeActivity.this, SocialWorkerGreenPointsActivity.class));
                     return true;
                 }
-                else if(id == R.id.nav_report_info)
+                else if(id == R.id.nav_report_info_sw)
                 {
-                    startActivity(new Intent(HomeActivity.this, StatusActivity.class));
+                    startActivity(new Intent(SocialWorkerHomeActivity.this, SocialWorkerStatusActivity.class));
                     return true;
                 }
                 return false;
@@ -110,9 +102,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 if(value!=null && value.exists()) {
-                    String start = "Welcome ";
+                    String start = "Hello ";
                     String name = value.getString("fullname");
-                    String end = " ! \nLatest on Environmental Innovation and Climate Action:";
+                    String end = " ! \nWe appreciate your commitment towards a clean society. You might find these interesting";
                     String final_txt = start+name+end;
                     welcome.setText(final_txt);
                 }
@@ -131,28 +123,28 @@ public class HomeActivity extends AppCompatActivity {
     {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new NewsRecyclerAdapter(articleList);
-         recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
     public void getNews()
     {
-        adapter.getContext(HomeActivity.this);
+        adapter.getContext(SocialWorkerHomeActivity.this);
         changeInProgress(true);
         NewsApiClient newsApiClient = new NewsApiClient("193fa1c0348b416ea3ce859d78d1d699");
         newsApiClient.getEverything(
                 new EverythingRequest.Builder()
-                        .q("Latest on Environmental Innovation and Climate Action")
+                        .q("Environment and volunteering")
                         .language("en")
                         .build(),
                 new NewsApiClient.ArticlesResponseCallback() {
                     @Override
                     public void onSuccess(ArticleResponse response) {
-                      runOnUiThread(()->{
-                          changeInProgress(false);
-                          articleList = response.getArticles();
-                          adapter.updateData(articleList);
-                          adapter.notifyDataSetChanged();
+                        runOnUiThread(()->{
+                            changeInProgress(false);
+                            articleList = response.getArticles();
+                            adapter.updateData(articleList);
+                            adapter.notifyDataSetChanged();
 
-                      });
+                        });
                     }
 
                     @Override

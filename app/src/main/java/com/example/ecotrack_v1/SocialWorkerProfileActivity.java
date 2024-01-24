@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,9 +33,8 @@ import java.util.Objects;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
-public class ProfileActivity extends AppCompatActivity {
+public class SocialWorkerProfileActivity extends AppCompatActivity {
     BottomNavigationView bnView;
-    FloatingActionButton fab;
     EditText fullName;
     TextView email;
     TextView profileType;
@@ -55,9 +53,8 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        bnView = (BottomNavigationView) findViewById(R.id.bnView);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        setContentView(R.layout.activity_social_worker_profile);
+        bnView = (BottomNavigationView) findViewById(R.id.bnView_sw);
         fullName =findViewById(R.id.txt_profile_fullname);
         email =  findViewById(R.id.txt_profile_email);
         profileType =findViewById(R.id.txt_profileType);
@@ -76,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                         Intent data = result.getData();
                         if(data!=null && data.getData()!=null){
                             selectedImageUri = data.getData();
-                            AndroidUtil.setProfilePic(ProfileActivity.this,selectedImageUri,profilePic);
+                            AndroidUtil.setProfilePic(SocialWorkerProfileActivity.this,selectedImageUri,profilePic);
                         }
                     }
                 }
@@ -110,22 +107,15 @@ public class ProfileActivity extends AppCompatActivity {
                 updateBtnClick();
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, ReportActivity.class));
-                finish();
-            }
-        });
         Menu menu = bnView.getMenu();
-        MenuItem menuItem = menu.getItem(4);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 auth.signOut();
-                Toast.makeText(ProfileActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ProfileActivity.this, StartActivity.class));
+                Toast.makeText(SocialWorkerProfileActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SocialWorkerProfileActivity.this, StartActivity.class));
                 finish();
             }
         });
@@ -133,25 +123,25 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.nav_home)
+                if(id == R.id.nav_home_sw)
                 {
-                    startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                    startActivity(new Intent(SocialWorkerProfileActivity.this, SocialWorkerHomeActivity.class));
                     finish();
                     return true;
                 }
-                else if(id == R.id.nav_profile)
+                else if(id == R.id.nav_profile_sw)
                 {
                     //startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
                 }
-                else if(id == R.id.nav_green_points)
+                else if(id == R.id.nav_green_points_sw)
                 {
-                    startActivity(new Intent(ProfileActivity.this, GreenPointsActivity.class));
+                    startActivity(new Intent(SocialWorkerProfileActivity.this, SocialWorkerGreenPointsActivity.class));
                     finish();
                     return true;
                 }
-                else if(id == R.id.nav_report_info)
+                else if(id == R.id.nav_report_info_sw)
                 {
-                    startActivity(new Intent(ProfileActivity.this, StatusActivity.class));
+                    startActivity(new Intent(SocialWorkerProfileActivity.this, SocialWorkerStatusActivity.class));
                     finish();
                     return true;
                 }
@@ -165,7 +155,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         Uri uri  = task.getResult();
-                        AndroidUtil.setProfilePic(ProfileActivity.this,uri,profilePic);
+                        AndroidUtil.setProfilePic(SocialWorkerProfileActivity.this,uri,profilePic);
                     }
                 });
 
@@ -185,7 +175,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         currentUserModel.setFullname(newUsername);
 
-
         if(selectedImageUri!=null){
             FireBaseUtil.getCurrentProfilePicStorageRef().putFile(selectedImageUri)
                     .addOnCompleteListener(task -> {
@@ -200,16 +189,16 @@ public class ProfileActivity extends AppCompatActivity {
         FireBaseUtil.currentUserDetails().set(currentUserModel)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        AndroidUtil.showToast(ProfileActivity.this,"Updated successfully");
+                        AndroidUtil.showToast(SocialWorkerProfileActivity.this,"Updated successfully");
                     }else{
-                        AndroidUtil.showToast(ProfileActivity.this,"Updated failed");
+                        AndroidUtil.showToast(SocialWorkerProfileActivity.this,"Updated failed");
                     }
                 });
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+        startActivity(new Intent(SocialWorkerProfileActivity.this, SocialWorkerHomeActivity.class));
         super.onBackPressed();
     }
 }

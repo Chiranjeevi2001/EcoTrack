@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home_sw"
+        android:title="Home"
+        android:icon="@drawable/icon_home"
+        />
+    <item
+        android:id="@+id/nav_green_points_sw"
+        android:title="Green Points"
+        android:icon="@drawable/icon_green_points"
+        />
+
+
+    <item
+        android:id="@+id/nav_report_info_sw"
+        android:title="Trashs"
+        android:icon="@drawable/clean_trash"
+        />
+
+
+    <item
+        android:id="@+id/nav_profile_sw"
+        android:title="Profile"
+        android:icon="@drawable/icon_profile"
+        />
+
+</menu>

@@ -21,74 +21,69 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class StatusActivity extends AppCompatActivity {
+public class SocialWorkerStatusActivity extends AppCompatActivity {
     BottomNavigationView bnView;
 
     ArrayList<ReportModel> reportModelArrayList;
     RecyclerView reportRecyclerView;
-    ReportRecyclerAdapter reportRecyclerAdapter;
+    SocialWorkerReportRecyclerAdapter reportRecyclerAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
-    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = new ProgressDialog(StatusActivity.this);
+        progressDialog = new ProgressDialog(SocialWorkerStatusActivity.this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Fetching your reports");
         progressDialog.show();
-        setContentView(R.layout.activity_status);
-        bnView = (BottomNavigationView) findViewById(R.id.bnView);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        reportRecyclerView = findViewById(R.id.reports_recycler_view);
+        setContentView(R.layout.activity_social_worker_status);
+        bnView = (BottomNavigationView) findViewById(R.id.bnView_sw);
+        reportRecyclerView = findViewById(R.id.reports_recycler_view_sw);
         reportRecyclerView.setHasFixedSize(true);
-        reportRecyclerView.setLayoutManager(new LinearLayoutManager(StatusActivity.this));
-
+        reportRecyclerView.setLayoutManager(new LinearLayoutManager(SocialWorkerStatusActivity.this));
 
         db = FirebaseFirestore.getInstance();
 
         reportModelArrayList = new ArrayList<ReportModel>();
 
-        reportRecyclerAdapter = new ReportRecyclerAdapter(StatusActivity.this, reportModelArrayList);
+        reportRecyclerAdapter = new SocialWorkerReportRecyclerAdapter(SocialWorkerStatusActivity.this, reportModelArrayList);
 
         reportRecyclerView.setAdapter(reportRecyclerAdapter);
-        EventChangeListener();
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(StatusActivity.this, ReportActivity.class));
-                finish();
-            }
+        reportRecyclerAdapter.setOnItemClickListener(position -> {
+            // Handle item removal
+            removeItem(position);
         });
+        EventChangeListener();
         Menu menu = bnView.getMenu();
-        MenuItem menuItem = menu.getItem(3);
+        MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
         bnView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.nav_home)
+                if(id == R.id.nav_home_sw)
                 {
-                    startActivity(new Intent(StatusActivity.this, HomeActivity.class));
+                    startActivity(new Intent(SocialWorkerStatusActivity.this, SocialWorkerHomeActivity.class));
                     finish();
                     return true;
                 }
-                else if(id == R.id.nav_profile)
+                else if(id == R.id.nav_profile_sw)
                 {
-                   startActivity(new Intent(StatusActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(SocialWorkerStatusActivity.this, SocialWorkerProfileActivity.class));
                     finish();
                 }
-                else if(id == R.id.nav_green_points)
+                else if(id == R.id.nav_green_points_sw)
                 {
-                    startActivity(new Intent(StatusActivity.this, GreenPointsActivity.class));
+                    startActivity(new Intent(SocialWorkerStatusActivity.this, SocialWorkerGreenPointsActivity.class));
                     finish();
                     return true;
                 }
-                else if(id == R.id.nav_report_info)
+                else if(id == R.id.nav_report_info_sw)
                 {
                     //startActivity(new Intent(StatusActivity.this, StatusActivity.class));
                     //return true;
@@ -98,10 +93,14 @@ public class StatusActivity extends AppCompatActivity {
         });
 
     }
+    private void removeItem(int position) {
+        reportModelArrayList.remove(position);
+        reportRecyclerView.getAdapter().notifyItemRemoved(position);
+    }
 
     private void EventChangeListener() {
         db.collection("reports")
-                .whereEqualTo("reportedUser",FireBaseUtil.currentUserId())
+                .orderBy("isCleaned", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -123,13 +122,9 @@ public class StatusActivity extends AppCompatActivity {
                             if(dc.getType() == DocumentChange.Type.ADDED)
                             {
                                 reportModelArrayList.add(dc.getDocument().toObject(ReportModel.class));
-
                             }
-
                             reportRecyclerAdapter.notifyDataSetChanged();
                             progressDialog.dismiss();
-
-
                         }
                     }
                 });
@@ -137,7 +132,7 @@ public class StatusActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(StatusActivity.this, HomeActivity.class));
+        startActivity(new Intent(SocialWorkerStatusActivity.this, SocialWorkerHomeActivity.class));
         super.onBackPressed();
     }
 }

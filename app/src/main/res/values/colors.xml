@@ -6,6 +6,11 @@
     <color name="appGreen">#5F9EA0</color>
     <color name="imageBackground">#A0A3A1</color>
     <color name="purple_200">#FF8886FC</color>
-    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_500">#FFA500</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+
+
 
 </resources>

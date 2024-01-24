@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
@@ -19,11 +22,17 @@ android {
     }
 
     buildTypes {
+        buildTypes.forEach{
+            val MAPS_API_KEY = Properties();
+            MAPS_API_KEY.load(FileInputStream(rootProject.file("local.properties")))
+            it.resValue("string", "google_maps_key", MAPS_API_KEY.getProperty("MAPS_API_KEY"))
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -32,6 +41,7 @@ android {
         viewBinding = true
     }
 }
+
 
 dependencies {
 
@@ -57,4 +67,6 @@ dependencies {
     implementation("com.github.KwabenBerko:News-API-Java:1.0.2")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.github.dhaval2404:imagepicker:2.1")
+    implementation("com.google.firebase:firebase-appcheck-safetynet:16.0.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 }

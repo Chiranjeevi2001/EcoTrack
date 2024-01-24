@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_placeholder_image"
+            android:id="@+id/trash_image_view"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="?attr/colorSecondary"
+                android:textStyle="bold"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:maxLines="3"
+                android:text="This is the title"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/location_title"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Type(s)"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/trash_types"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Size"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/status_trash_size"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Status"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/status_report_cleaned"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/btn_navigate"
+                android:background="@color/transparent"
+                android:text="Navigate"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"/>
+
+            <Button
+                android:id="@+id/btn_mark_as_done"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/transparent"
+                android:text="Mark as done"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+            </LinearLayout>
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

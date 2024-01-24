@@ -33,6 +33,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -70,7 +72,6 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
     FireBaseUtil fireBaseUtil;
     ReportModel reportModel;
     Button submit;
-
     private final int FINE_PERMISSION_CODE = 1;
     FusedLocationProviderClient fusedLocationProviderClient;
     private LocationCallback locationCallback;
@@ -355,7 +356,7 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
                         Intent data = result.getData();
                         if (data != null && data.getData() != null) {
                             selectedImageUri = data.getData();
-                            AndroidUtil.setProfilePic(ReportActivity.this, selectedImageUri, trashImg);
+                            Glide.with(ReportActivity.this).load(selectedImageUri).apply(RequestOptions.fitCenterTransform()).into(trashImg);
                         }
                     }
                 }
@@ -381,7 +382,7 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
         });
         locationCallback = new LocationCallback() {
             @Override
-            public void onLocationResult(LocationResult locationResult) {
+            public void onLocationResult(@NonNull LocationResult locationResult) {
                 if (locationResult != null) {
                     Location location = locationResult.getLastLocation();
                     if (location != null) {
@@ -411,11 +412,15 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
             public void onClick(View view) {
                 canSubmit = true;
                 reportModel.setReportedUser(userID);
+                reportModel.setIsCleaned(false);
+
 
                 LatLng l1 = new LatLng(latitude, longitude);
                 if(l1.latitude!= 0.0 && l1.longitude!=0.0)
                 {
-                    reportModel.setLocation(l1);
+                    reportModel.setLongitude(l1.longitude);
+                    reportModel.setLatitude(l1.latitude);
+                    reportModel.setPlace(place);
                 }
                 else {
                     canSubmit =false;
@@ -430,15 +435,15 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
                     String selectedOption = selectedRadioButton.getText().toString();
                     Log.d("Selected option:", selectedOption);
                     reportModel.setTrashSize(selectedOption);
-                    if(selectedOption == getString(R.string.small))
+                    if(selectedOption.equals(getString(R.string.small)))
                     {
                         currentUser.addGreenPoints(10);
                     }
-                    else if(selectedOption == getString(R.string.medium))
+                    else if(selectedOption.equals(getString(R.string.medium)))
                     {
                         currentUser.addGreenPoints(20);
                     }
-                    else if(selectedOption == getString(R.string.large))
+                    else if(selectedOption.equals(getString(R.string.large)))
                     {
                         currentUser.addGreenPoints(30);
                     }
@@ -567,7 +572,9 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
     protected void onDestroy() {
         super.onDestroy();
         // Stop location updates when the activity is destroyed
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+        if (locationCallback != null && fusedLocationProviderClient!=null) {
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+        }
     }
 
     private void getPlaceName(double latitude, double longitude) throws IOException {
@@ -582,5 +589,10 @@ public class ReportActivity extends AppCompatActivity implements LocationListene
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ReportActivity.this, HomeActivity.class));
+        super.onBackPressed();
     }
 }

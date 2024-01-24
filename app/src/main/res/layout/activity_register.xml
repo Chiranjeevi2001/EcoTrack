@@ -27,6 +27,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:id="@+id/btn_choose_image"
         android:text="@string/Browse"/>
 </LinearLayout>
@@ -36,8 +37,10 @@
         android:drawableLeft="@drawable/ic_name"
         android:layout_height="40dp"
         android:padding="10dp"
+        android:textCursorDrawable="@null"
         android:textColor="@color/black"
         android:background="@drawable/edit_text_rounded_corners"
+        android:outlineAmbientShadowColor="@color/black"
         android:textColorHint="@color/hintGrey"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
@@ -48,10 +51,12 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
+        android:textCursorDrawable="@null"
         android:layout_height="40dp"
         android:padding="10dp"
         android:drawableLeft="@drawable/icon_profile"
         android:background="@drawable/edit_text_rounded_corners"
+        android:outlineAmbientShadowColor="@color/black"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:layout_gravity="center"
@@ -66,7 +71,9 @@
         android:layout_width="300dp"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_lock"
+        android:textCursorDrawable="@null"
         android:layout_height="40dp"
+        android:outlineAmbientShadowColor="@color/black"
         android:textColorHint="@color/hintGrey"
         android:padding="10dp"
         android:background="@drawable/edit_text_rounded_corners"
@@ -103,6 +110,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/appGreen"
+        android:textColor="@color/white"
         android:layout_marginBottom="34dp"
         android:text="@string/action_register"
  />
