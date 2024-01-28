@@ -64,7 +64,7 @@ Report trash, clean them up and earn Green Points! Showcase to your friends and 
 ## LeaderBoard
 Compete with your freinds! The more a user contributes to society, the higher their rank will be!
 
-![LeaderBoard](https://lh3.googleusercontent.com/pw/ABLVV86lOGLRBnaoI97CyoiNDVqyo3aYqMecLiHLAZsAqBQ1TD0cPw6WzB7KIU9QmPNB0bOOJZtf65Ak3gl6bX1N6FTAqN1943-v_B2tBlZ-crKPlSO65umEuvPa_7jy0YPNtX7xIifcwv8ma-vgK08_uwT0=w327-h654-s-no-gm?authuser=1)
+![LeaderBoard](https://lh3.googleusercontent.com/pw/ABLVV85XzQ14nApY697KbMZ6HkEFs2iqS4ZS7l8m9HucyVnSGjexab_adJ3ATd9yEQvGVXhDX3l6g2LFpLj6rSG7QvurvhsoGgn9JmkSwrETLnloiHDrWe8L2UmUjf2TyuIQY_yn0AdBNzgzEpAOHQHa0tXL=w296-h661-s-no-gm?authuser=1)
 
 ## Profile
 View and update your profile, whenever you want!
