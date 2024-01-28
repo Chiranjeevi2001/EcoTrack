@@ -121,22 +121,6 @@ versionCode = 1
 | Hint Grey | ![#606060](https://via.placeholder.com/10/606060?text=+) #606060 |
 
 
-## Authors
-
-- [@Chiranjeevi B.S .](https://github.com/Chiranjeevi2001)
-- [@Nitesh Yadav](https://github.com/NiteshShivam)
-
-
-
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chiranjeevi-portfolio.netlify.app/)
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chiranjeevi-b-s-291812221/)
-
-
-
-
-
 ## Running the project
 
 Make sure to install the Android Studio Hedgehog SDK before you get started. The backend framework used is Firebase. Create an account in Firebase and link it to your project. Find out more [here](https://firebase.google.com/docs/android/setup)
@@ -148,27 +132,23 @@ Clone the Repository
   git clone https://github.com/Chiranjeevi2001/EcoTrack-v1.git
 ```
 After cloning is completed, navigate to the corresponding directory and open android studio. Add your project, select an Emulator (API>=24) , build and run your project!
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chiranjeevi-portfolio.netlify.app/)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chiranjeevi-b-s-291812221/)
+
+
     
+## Authors
 
+- [@Chiranjeevi B.S .](https://github.com/Chiranjeevi2001)
+- [@Nitesh Yadav](https://github.com/NiteshShivam)
 
-## Running Tests
+## Contributing
 
-To run tests, run the following command
+Contributions are always welcome!
 
-```bash
-  npm run test
-```
-
-
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
 
 
 ## Support
