@@ -44,7 +44,7 @@ You will be greeted by a welcome message and a selection of relevant and up-to-d
 ## Report Trash
 Find something trashy in you neighbourhood? Report it! Include a photo, tag the location, mention the size and type of trash and the Social Workers will take care of it!
 
-![Report](https://photos.app.goo.gl/yYy8Ux2SSkam27VH9)
+![Report](https://drive.usercontent.google.com/download?id=17ONAdBp4-2DH4MFfS5nCsuKtDIQreItN&authuser=0)
 
 ## Report Status
 View the status of the trash that you have reported!
