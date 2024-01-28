@@ -134,7 +134,6 @@ Clone the Repository
 After cloning is completed, navigate to the corresponding directory and open android studio. Add your project, select an Emulator (API>=24) , build and run your project!
 
 ## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chiranjeevi-portfolio.netlify.app/)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chiranjeevi-b-s-291812221/)
 
