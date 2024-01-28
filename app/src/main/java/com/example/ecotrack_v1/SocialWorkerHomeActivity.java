@@ -132,7 +132,7 @@ public class SocialWorkerHomeActivity extends AppCompatActivity {
         NewsApiClient newsApiClient = new NewsApiClient("193fa1c0348b416ea3ce859d78d1d699");
         newsApiClient.getEverything(
                 new EverythingRequest.Builder()
-                        .q("Environment and volunteering")
+                        .q("Cleanliness and Environment")
                         .language("en")
                         .build(),
                 new NewsApiClient.ArticlesResponseCallback() {

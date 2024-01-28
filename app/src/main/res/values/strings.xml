@@ -32,5 +32,6 @@
     <string name="swStatusHeader">Trash Reports</string>
     <string name="forgot_password_header">Forgot Password?</string>
     <string name="forgot_password_prompt">Please enter your registered Email ID to reset your password.</string>
+    <string name="leaderBoard">LeaderBoard</string>
 
 </resources>

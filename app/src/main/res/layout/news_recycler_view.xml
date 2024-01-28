@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/hintGrey"
         android:padding="2dp"
         android:gravity="center_vertical">
         
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:text="source"
+                android:textColor="@color/white"
                 android:layout_marginBottom="8dp"
                 android:id="@+id/article_source" />
 
