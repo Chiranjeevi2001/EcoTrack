@@ -118,7 +118,7 @@ versionCode = 1
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | appGreen | ![#5F9EA0](https://via.placeholder.com/10/5f9ea0f?text=+) #5F9EA0 |
-| Hint Grey | ![#606060](https://via.placeholder.com/10/606060?text=+) #606060 |
+| hintGrey | ![#606060](https://via.placeholder.com/10/606060?text=+) #606060 |
 
 
 ## Running the project
