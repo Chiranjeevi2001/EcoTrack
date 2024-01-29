@@ -99,7 +99,7 @@ https://developers.google.com/maps/documentation/android-sdk/start
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `unique id`      | `string` | Provides location intelligence for software developers creating location-based products and services |
+| `maps_api_key`      | `string` | Provides location intelligence for software developers creating location-based products and services |
 
 Create a variable inside your local.properties file and include the property value in the Manifest file.
 
@@ -131,7 +131,7 @@ Clone the Repository
 ```bash
   git clone https://github.com/Chiranjeevi2001/EcoTrack-v1.git
 ```
-After cloning is completed, navigate to the corresponding directory and open android studio. Add your project, select an Emulator (API>=24) , build and run your project!
+After cloning is completed, navigate to the corresponding directory and open android studio. Add your project, select an Emulator (API>=24). Add the necessary API keys, build and run your project!
 
 ## 🔗 Links
 
