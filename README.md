@@ -141,7 +141,7 @@ After cloning is completed, navigate to the corresponding directory and open and
     
 ## Authors
 
-- [@Chiranjeevi B.S .](https://github.com/Chiranjeevi2001)
+- [@Chiranjeevi](https://github.com/Chiranjeevi2001)
 - [@Nitesh Yadav](https://github.com/NiteshShivam)
 
 ## Contributing
