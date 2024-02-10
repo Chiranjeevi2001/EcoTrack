@@ -44,7 +44,7 @@ You will be greeted by a welcome message and a selection of relevant and up-to-d
 ## Report Trash
 Find something trashy in you neighbourhood? Report it! Include a photo, tag the location, mention the size and type of trash and the Social Workers will take care of it!
 
-![Report](https://postimg.cc/V0t5TnfJ)
+![Report](https://lh3.googleusercontent.com/pw/ABLVV86jN8Y2LA2a3Hw262sobOln4Vs1R7cOErhuqTOUXDfnFrXKmnMWQNV1htenjPYxhS1Dt2sBZHHCPDZBbfWnJ6YZ1R7Lci89eZ99QLjhYW7C13tCczDv3ZjWSbsEIiVZqX0HDs2dp2Qm_X_z8T2Q3-bk=w296-h661-s-no-gm?authuser=1)
 
 ## Report Status
 View the status of the trash that you have reported!
@@ -62,7 +62,7 @@ Report trash, clean them up and earn Green Points! Showcase to your friends and 
 ![Green Points](https://lh3.googleusercontent.com/pw/ABLVV85m4SHsPEFrV9WtsGvi9P5kYErZI1W9-ue8z56FkMtPYizLUNj9BG4Shs46Ory1Ccs_VraHqblDiRp1gtAavp57KWnUT1SIug691AYV1_E6GeOR0hsA-ELLYmCpUUNSO_Yn3g2rvZVuxba2SbuO6r2Q=w327-h654-s-no-gm?authuser=1)
 
 ## LeaderBoard
-Compete with your freinds! The more a user contributes to society, the higher their rank will be!
+Compete with your friends! The more a user contributes to society, the higher their rank will be!
 
 ![LeaderBoard](https://lh3.googleusercontent.com/pw/ABLVV85XzQ14nApY697KbMZ6HkEFs2iqS4ZS7l8m9HucyVnSGjexab_adJ3ATd9yEQvGVXhDX3l6g2LFpLj6rSG7QvurvhsoGgn9JmkSwrETLnloiHDrWe8L2UmUjf2TyuIQY_yn0AdBNzgzEpAOHQHa0tXL=w296-h661-s-no-gm?authuser=1)
 
