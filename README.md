@@ -9,7 +9,7 @@ A Trash Tracker app that promotes Sustainable Development Goal (SDG) #11 - Susta
 
 ## Features
 
-- **Profile Types**: A user can either login as a Regular User or a Social Worker. Each type of user has a specific responsibility. The Regular User is responsible to report the trashs around them. The Social Worker is resposible to navigate to the scene of the trash and clean it up.
+- **Profile Types**: A user can either login as a Regular User or a Social Worker. Each type of user has a specific responsibility. The Regular User is responsible to report the trashs around them. The Social Worker is responsible to navigate to the scene of the trash and clean it up.
 
 - **Photo Upload**: Users can capture photos of littered areas using their phone's camera within the app, or upload an image from their Gallery.
 
