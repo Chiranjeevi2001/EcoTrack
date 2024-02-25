@@ -42,7 +42,7 @@ You will be greeted by a welcome message and a selection of relevant and up-to-d
 ![Home Page](https://lh3.googleusercontent.com/pw/ABLVV85wLqS3yQntDouOL4Yh7hmdl3jwxMCrGhWqIzmRZmez3xKb-A4E0N1RDicY9yyF2eHMQz2T_U4wWsP90QhTtzQ7f9wSKau5PVltukEm2w7B6SRlGWzQ8afCs8NmjNiAMIPL3AT8H1jdVjfz0Pw2tClJ=w327-h654-s-no-gm?authuser=1)
 
 ## Report Trash
-Find something trashy in you neighbourhood? Report it! Include a photo, tag the location, mention the size and type of trash and the Social Workers will take care of it!
+Find something trashy in you neighbourhood? Report it! Include a photo, tag the location, mention the size and type of trash and let Social Workers take care of it!
 
 ![Report](https://lh3.googleusercontent.com/pw/ABLVV86jN8Y2LA2a3Hw262sobOln4Vs1R7cOErhuqTOUXDfnFrXKmnMWQNV1htenjPYxhS1Dt2sBZHHCPDZBbfWnJ6YZ1R7Lci89eZ99QLjhYW7C13tCczDv3ZjWSbsEIiVZqX0HDs2dp2Qm_X_z8T2Q3-bk=w296-h661-s-no-gm?authuser=1)
 
@@ -57,7 +57,7 @@ Are you registered as a Social Worker? We applaud your commitment for a hygenic 
 ![Trash](https://lh3.googleusercontent.com/pw/ABLVV85BRUn5nsPTJsydGUepBUGTXkErg0TfGVbUprmk3B-xzQOCvJ_143goSt2g4vIwqRyVzAnc-mx9-bYbd9IEkqqHhkFUQOf1RhBAA4BCPJstL8vlNx9O6exAfIpl13J2OMynH2IA7PHYpyLFQHGpRF-U=w293-h654-s-no-gm?authuser=1)
 
 ## Users Green Points
-Report trash, clean them up and earn Green Points! Showcase to your friends and family how pro-environmental you are!
+Report trash, take action to tidy it, and accumulate Green Points! Demonstrate to your friends and family your dedication to environmental responsibility!
 
 ![Green Points](https://lh3.googleusercontent.com/pw/ABLVV85m4SHsPEFrV9WtsGvi9P5kYErZI1W9-ue8z56FkMtPYizLUNj9BG4Shs46Ory1Ccs_VraHqblDiRp1gtAavp57KWnUT1SIug691AYV1_E6GeOR0hsA-ELLYmCpUUNSO_Yn3g2rvZVuxba2SbuO6r2Q=w327-h654-s-no-gm?authuser=1)
 
@@ -146,7 +146,7 @@ After cloning is completed, navigate to the corresponding directory and open and
 
 ## Contributing
 
-Contributions are always welcome!
+Contributions are always welcome! Make the changes you wish to see and create a pull request.
 
 
 
