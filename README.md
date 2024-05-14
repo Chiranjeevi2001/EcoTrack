@@ -3,7 +3,7 @@
 
 _For a greener future, one step at a time_
 
-A Trash Tracker app that promotes Sustainable Development Goal (SDG) #11 - Sustainable Cities and Communities. This app could encourage users to take photos of litter or trash in their communities, tag the location, and report it.
+A Trash Tracker app that promotes Sustainable Development Goal (SDG) #11 - Sustainable Cities and Communities. This app encourages users to take photos of litter or trash in their communities, tag the location, and report it.
 
 
 
